@@ -40,5 +40,14 @@ CHEK_ROOT
     systemctl start mysqld &>>$LOG_FILE_NAME
     VALIDATE $? "starting MYSQL server"
 
-    mysql_secure_installation --set-root-pass ExpenseApp@1 &>>$LOG_FILE_NAME
-    VALIDATE $? "setting root password"
+    mysql -h mysql.mogili.online -u root -pExpenseApp@1 -e 'show databases;'
+
+
+if [ $? -ne 0 ]
+    then
+        echo "MYSQL Root password not setup" &>>$LOG_FILE_NAME
+        mysql_secure_installation --set-root-pass ExpenseApp@1
+        VALIDATE $? "setting Root password"
+    else
+        echo "MYSQL Root password already setup ..... $Y SKPPING $N"
+fi
