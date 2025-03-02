@@ -40,7 +40,7 @@ CHEK_ROOT
     systemctl start mysqld &>>$LOG_FILE_NAME
     VALIDATE $? "starting MYSQL server"
 
-    mysql -h mysql.mogili.online -u root -pExpenseApp@1 -e 'show databases;' 
+    mysql -h mysql.mogili.online -u root -pExpenseApp@1 -e 'show databases;' &>>$LOG_FILE_NAME
 
 
 if [ $? -ne 0 ]
