@@ -71,7 +71,7 @@ cp /home/ec2-user/expense-shell/backend.service /etc/systemd/system/backend.serv
 dnf install mysql -y &>>$LOG_FILE_NAME
 VALIDATE $? "Installing MYSQL client"
 
-mysql -h mysql.mogili.online -u root -pExpenseApp@1 < /app/schema/backend.sql 
+mysql -h mysql.mogili.online -uroot -pExpenseApp@1 < /app/schema/backend.sql 
 VALIDATE $? "Setting up the transactions schema and tables"
 
 systemctl daemon-reload &>>$LOG_FILE_NAME
