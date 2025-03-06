@@ -19,10 +19,10 @@ VALIDATE(){
         else
             echo -e "$2 ...... $G SUCCESS $N"
     fi
-        
+       
 }
 
-CHEK_ROOT(){
+CHECK_ROOT(){
     if [ $USERID -ne 0 ]
         then
             echo "ERROR:: you must have sudo access to execute this script"
@@ -30,9 +30,10 @@ CHEK_ROOT(){
     fi
 }
 
-        mkdir -p $LOGS_FOLDER
- echo "script starting and execucting at: $TIMESTAMP" &>>$LOG_FILE_NAME
-CHEK_ROOT
+mkdir -p $LOGS_FOLDER
+echo "script starting and execucting at: $TIMESTAMP" &>>$LOG_FILE_NAME
+
+CHECK_ROOT
 
 dnf install nginx -y &>>$LOG_FILE_NAME
 VALIDATE $? "Installing Nginx server"
