@@ -50,7 +50,7 @@ curl -o /tmp/frontend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expe
 VALIDATE $? "Downloading latest code"
 
 cd /usr/share/nginx/html  &>>$LOG_FILE_NAME
-VALIDATE $? " Moving to HTML directory"
+VALIDATE $? "Moving to HTML directory"
 
 unzip /tmp/frontend.zip  &>>$LOG_FILE_NAME
 VALIDATE $? "Unzipping the frontend code"
